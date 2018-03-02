@@ -1,8 +1,8 @@
-class Ball extends Image {
+class Ball extends GameImage {
     constructor(game) {
-        super()
+        super(game)
         const img = game.imageByName('ball')
-        // Image 共有的属性
+        // GameImage 共有的属性
         this.image = img
         this.w = img.width
         this.h = img.height

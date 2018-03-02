@@ -19,7 +19,7 @@ class SceneLevel  extends Scene {
         canvas.addEventListener('click', (e) => {
             const {clientX:cx, clientY:cy} = e
             console.log('e', cx, cy)
-            const b = Block(game, [cx, cy])
+            const b = Block.new(game, [cx, cy])
             this.blocks.push(b)
         })
         

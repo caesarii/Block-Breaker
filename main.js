@@ -4,7 +4,7 @@ const loadLevel = function(game, n) {
     const blocks = []
     for (let i = 0; i < level.length; i++) {
         const p = level[i]
-        const b = Block(game, p)
+        const b = Block.new(game, p)
         blocks.push(b)
     }
     return blocks

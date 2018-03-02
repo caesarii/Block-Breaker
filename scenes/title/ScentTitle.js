@@ -3,6 +3,7 @@ class SceneTitle extends Scene {
         super(game)
         game.registerAction('k', function(){
             const s = SceneMain(game)
+            log('scene main', s)
             game.replaceScene(s)
         })
         game.registerAction('e', function(){
@@ -12,7 +13,7 @@ class SceneTitle extends Scene {
     }
     draw() {
         // draw labels
-        log('draw title')
+        // log('draw title')
         this.game.drawText('按 k 开始游戏', 100, 190)
         this.game.drawText('按 e 进入关卡编辑器', 100, 210)
     }

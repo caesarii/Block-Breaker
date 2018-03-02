@@ -33,18 +33,14 @@ class Game extends GameObject {
             const path = g.images[name]
             let img = new Image()
             img.src = path
-            log('init', img)
     
             img.onload = function() {
                 // 存入 g.images 中
                 g.images[name] = img
                 // 所有图片都成功载入之后, 调用 run
                 loads.push(1)
-                // log('load images', loads.length, names.length)
-                log('load')
     
                 if (loads.length === names.length) {
-                    // log('load images', g.images)
                     g.runCallback(g)
                 }
             }
@@ -65,7 +61,7 @@ class Game extends GameObject {
     }
     // draw
     draw() {
-        log('draw game')
+        // log('draw game')
         this.scene.draw()
     }
     
@@ -98,6 +94,7 @@ class Game extends GameObject {
         const g = this
         // log('image by name', g.images)
         const img = g.images[name]
+        // log('img', img, img.height)
         // const image = {
         //     w: img.width,
         //     h: img.height,
