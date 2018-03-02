@@ -45,7 +45,7 @@ const __main = function() {
         g.loadScene(s)
     })
     
-    enableDebugMode(game, true)
+    // enableDebugMode(game, true)
 }
 
 __main()
