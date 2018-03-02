@@ -3,7 +3,7 @@ class Scene {
         this.game = game
     }
     static new(game) {
-        var i = new this(game)
+        const i = new this(game)
         return i
     }
     draw() {

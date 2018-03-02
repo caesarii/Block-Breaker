@@ -11,7 +11,7 @@ class Game {
         this.canvas = document.querySelector('#id-canvas')
         this.context = this.canvas.getContext('2d')
         // events
-        var self = this
+        const self = this
         window.addEventListener('keydown', event => {
             this.keydowns[event.key] = true
         })
@@ -43,10 +43,10 @@ class Game {
     runloop() {
         log(window.fps)
         // events
-        var g = this
-        var actions = Object.keys(g.actions)
-        for (var i = 0; i < actions.length; i++) {
-            var key = actions[i]
+        const g = this
+        const actions = Object.keys(g.actions)
+        for (let i = 0; i < actions.length; i++) {
+            const key = actions[i]
             if(g.keydowns[key]) {
                 // 如果按键被按下, 调用注册的 action
                 g.actions[key]()
@@ -64,10 +64,10 @@ class Game {
         }, 1000/window.fps)
     }
     imageByName(name) {
-        var g = this
+        const g = this
         log('image by name', g.images)
-        var img = g.images[name]
-        var image = {
+        const img = g.images[name]
+        const image = {
             w: img.width,
             h: img.height,
             image: img,
@@ -75,7 +75,7 @@ class Game {
         return image
     }
     runWithScene(scene) {
-        var g = this
+        const g = this
         g.scene = scene
         // 开始运行程序
         setTimeout(function(){
@@ -90,13 +90,13 @@ class Game {
     }
     
     init() {
-        var g = this
-        var loads = []
+        const g = this
+        const loads = []
         // 预先载入所有图片
-        var names = Object.keys(g.images)
-        for (var i = 0; i < names.length; i++) {
+        const names = Object.keys(g.images)
+        for (let i = 0; i < names.length; i++) {
             let name = names[i]
-            var path = g.images[name]
+            const path = g.images[name]
             let img = new Image()
             img.src = path
             img.onload = function() {
