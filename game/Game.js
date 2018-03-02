@@ -1,6 +1,7 @@
 
-class Game {
+class Game extends GameObject {
     constructor(fps, images, runCallback) {
+        super()
         window.fps = fps
         this.images = images
         this.runCallback = runCallback
@@ -21,10 +22,40 @@ class Game {
         this.init()
     }
     
-    static instance(...args) {
-        this.i = this.i || new this(...args)
-        return this.i
+    init() {
+        const g = this
+        // TODO loads 是一种判断异步加载是否完成的机制
+        const loads = []
+        // 预先载入所有图片
+        const names = Object.keys(g.images)
+        for (let i = 0; i < names.length; i++) {
+            let name = names[i]
+            const path = g.images[name]
+            let img = new Image()
+            img.src = path
+            log('init', img)
+    
+            img.onload = function() {
+                // 存入 g.images 中
+                g.images[name] = img
+                // 所有图片都成功载入之后, 调用 run
+                loads.push(1)
+                // log('load images', loads.length, names.length)
+                log('load')
+    
+                if (loads.length === names.length) {
+                    // log('load images', g.images)
+                    g.runCallback(g)
+                }
+            }
+        }
     }
+    
+    // TODO : deleted
+    __start() {
+        this.runCallback(this)
+    }
+    
     drawImage(img) {
         this.context.drawImage(img.image, img.x, img.y)
     }
@@ -34,14 +65,12 @@ class Game {
     }
     // draw
     draw() {
+        log('draw game')
         this.scene.draw()
     }
-    //
-    registerAction(key, callback) {
-        this.actions[key] = callback
-    }
+    
     runloop() {
-        log(window.fps)
+        // log(window.fps)
         // events
         const g = this
         const actions = Object.keys(g.actions)
@@ -63,18 +92,20 @@ class Game {
             g.runloop()
         }, 1000/window.fps)
     }
+    
+    // 使用 Game 载入的素材
     imageByName(name) {
         const g = this
-        log('image by name', g.images)
+        // log('image by name', g.images)
         const img = g.images[name]
-        const image = {
-            w: img.width,
-            h: img.height,
-            image: img,
-        }
-        return image
+        // const image = {
+        //     w: img.width,
+        //     h: img.height,
+        //     image: img,
+        // }
+        return img
     }
-    runWithScene(scene) {
+    loadScene(scene) {
         const g = this
         g.scene = scene
         // 开始运行程序
@@ -82,34 +113,22 @@ class Game {
             g.runloop()
         }, 1000/window.fps)
     }
+    
+    
+    // 供场景调用的方法
+    // 绘制文本
+    drawText(text, left, top) {
+        this.context.fillText(text, left, top)
+    }
+    // 注册按键
+    registerAction(key, callback) {
+        this.actions[key] = callback
+    }
+    // 替换场景
     replaceScene(scene) {
         this.scene = scene
     }
-    __start(scene) {
-        this.runCallback(this)
-    }
     
-    init() {
-        const g = this
-        const loads = []
-        // 预先载入所有图片
-        const names = Object.keys(g.images)
-        for (let i = 0; i < names.length; i++) {
-            let name = names[i]
-            const path = g.images[name]
-            let img = new Image()
-            img.src = path
-            img.onload = function() {
-                // 存入 g.images 中
-                g.images[name] = img
-                // 所有图片都成功载入之后, 调用 run
-                loads.push(1)
-                log('load images', loads.length, names.length)
-                if (loads.length == names.length) {
-                    log('load images', g.images)
-                    g.__start()
-                }
-            }
-        }
-    }
+    
+    
 }
