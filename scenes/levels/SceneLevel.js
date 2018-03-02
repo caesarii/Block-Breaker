@@ -15,7 +15,7 @@ class SceneLevel  extends Scene {
         
         this.registerKeys(game)
         
-        const canvas = document.querySelector('#id-canvas')
+        const canvas = game.canvas
         canvas.addEventListener('click', (e) => {
             const {clientX:cx, clientY:cy} = e
             console.log('e', cx, cy)
@@ -52,8 +52,9 @@ class SceneLevel  extends Scene {
     draw() {
         const {game, blocks, paddle, ball, score} = this
         // draw 背景
-        game.context.fillStyle = "#554"
-        game.context.fillRect(0, 0, 400, 300)
+        // game.context.fillStyle = "#554"
+        // game.context.fillRect(0, 0, 400, 300)
+        game.drawRect([0, 0, 400, 300])
         // draw
         game.drawImage(paddle)
         game.drawImage(ball)
@@ -65,10 +66,9 @@ class SceneLevel  extends Scene {
             }
         }
         // draw labels
-        game.context.font = '20px serif';
-        game.context.fillText('分数: ' + score, 100, 200)
-        // draw labels
-        // game.context.fillText('按s开始游戏', 100, 190)
+        game.drawText('分数: ' + score, 100, 200)
+        // game.context.font = '20px serif';
+        // game.context.fillText('分数: ' + score, 100, 200)
     }
     update() {
         const {game, blocks, paddle, ball} = this

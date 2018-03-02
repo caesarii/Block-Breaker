@@ -53,8 +53,9 @@ class SceneMain extends Scene {
     draw() {
         // draw 背景
         const {game, paddle, ball, score, blocks}= this
-        game.context.fillStyle = "#554"
-        game.context.fillRect(0, 0, 400, 300)
+        game.drawRect([0, 0, 400, 300])
+        // game.context.fillStyle = "#554"
+        // game.context.fillRect(0, 0, 400, 300)
         // draw
         game.drawImage(paddle)
         game.drawImage(ball)
@@ -66,7 +67,8 @@ class SceneMain extends Scene {
             }
         }
         // draw labels
-        game.context.fillText('分数: ' + score, 10, 290)
+        game.drawText('分数: ' + score, 10, 290)
+        // game.context.fillText('分数: ' + score, 10, 290)
     }
     
     update() {

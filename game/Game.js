@@ -114,8 +114,13 @@ class Game extends GameObject {
     
     // 供场景调用的方法
     // 绘制文本
-    drawText(text, left, top) {
+    drawText(text, left, top, font='20px serif',) {
+        this.context.font = font
         this.context.fillText(text, left, top)
+    }
+    drawRect(rect, style='#554', ) {
+        this.context.fillStyle = style
+        this.context.fillRect(rect[0], rect[1], rect[2], rect[3])
     }
     // 注册按键
     registerAction(key, callback) {
