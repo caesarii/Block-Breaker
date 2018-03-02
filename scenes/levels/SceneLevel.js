@@ -1,11 +1,11 @@
 
-class SceneLevel  extends Scene {
+class SceneLevel  extends GameScene {
     constructor(game) {
         super(game)
-        this.setup(game)
+        this.init(game)
     }
     
-    setup(game) {
+    init(game) {
         this.game = game
         this.paddle = Paddle.new(game)
         this.ball = Ball.new(game)
@@ -38,12 +38,12 @@ class SceneLevel  extends Scene {
             ball.fire()
         })
         game.registerAction('e', function(){
-            const s = new SceneLevel(game)
+            const s = SceneLevel.new(game)
             game.replaceScene(s)
         })
         
         game.registerAction('s', function(){
-            const s = SceneMain(game)
+            const s = SceneMain.new(game)
             game.replaceScene(s)
         })
     }
@@ -52,8 +52,6 @@ class SceneLevel  extends Scene {
     draw() {
         const {game, blocks, paddle, ball, score} = this
         // draw 背景
-        // game.context.fillStyle = "#554"
-        // game.context.fillRect(0, 0, 400, 300)
         game.drawRect([0, 0, 400, 300])
         // draw
         game.drawImage(paddle)
@@ -67,8 +65,6 @@ class SceneLevel  extends Scene {
         }
         // draw labels
         game.drawText('分数: ' + score, 100, 200)
-        // game.context.font = '20px serif';
-        // game.context.fillText('分数: ' + score, 100, 200)
     }
     update() {
         const {game, blocks, paddle, ball} = this
@@ -107,7 +103,7 @@ class SceneLevel  extends Scene {
         let enableDrag = this.enableDrag
         const ball = this.ball
         // mouse event
-        
+    
         game.canvas.addEventListener('mousedown', function(event) {
             const x = event.offsetX
             const y = event.offsetY

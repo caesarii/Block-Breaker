@@ -47,11 +47,6 @@ class Game extends GameObject {
         }
     }
     
-    // TODO : deleted
-    __start() {
-        this.runCallback(this)
-    }
-    
     drawImage(img) {
         this.context.drawImage(img.image, img.x, img.y)
     }
@@ -102,6 +97,7 @@ class Game extends GameObject {
         // }
         return img
     }
+    
     loadScene(scene) {
         const g = this
         g.scene = scene
@@ -111,26 +107,25 @@ class Game extends GameObject {
         }, 1000/window.fps)
     }
     
-    
     // 供场景调用的方法
     // 绘制文本
     drawText(text, left, top, font='20px serif',) {
         this.context.font = font
         this.context.fillText(text, left, top)
     }
+    
     drawRect(rect, style='#554', ) {
         this.context.fillStyle = style
         this.context.fillRect(rect[0], rect[1], rect[2], rect[3])
     }
+    
     // 注册按键
     registerAction(key, callback) {
         this.actions[key] = callback
     }
+    
     // 替换场景
     replaceScene(scene) {
         this.scene = scene
     }
-    
-    
-    
 }

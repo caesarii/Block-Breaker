@@ -1,4 +1,4 @@
-class Scene extends GameObject {
+class GameScene extends GameObject {
     constructor(game) {
         super(game)
         this.game = game

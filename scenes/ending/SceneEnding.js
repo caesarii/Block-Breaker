@@ -1,4 +1,4 @@
-class SceneEnd extends Scene {
+class SceneEnd extends GameScene {
     constructor(game) {
         super(game)
         game.registerAction('r', function(){
@@ -8,6 +8,6 @@ class SceneEnd extends Scene {
     }
     draw() {
         // draw labels
-        this.game.context.fillText('游戏结束, 按 r 返回标题界面', 100, 290)
+        game.drawText('游戏结束, 按 r 返回标题界面', 100, 290)
     }
 }
