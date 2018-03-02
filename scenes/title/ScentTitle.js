@@ -1,8 +1,8 @@
-class SceneTitle extends GuaScene {
+class SceneTitle extends Scene {
     constructor(game) {
         super(game)
         game.registerAction('k', function(){
-            const s = Scene(game)
+            const s = SceneInst(game)
             game.replaceScene(s)
         })
         game.registerAction('e', function(){

@@ -1,4 +1,4 @@
-const Scene = function(game) {
+const SceneInst = function(game) {
     const s = {
         game: game,
     }
@@ -29,7 +29,7 @@ const Scene = function(game) {
         game.drawImage(paddle)
         game.drawImage(ball)
         // draw blocks
-        for (const i = 0; i < blocks.length; i++) {
+        for (let i = 0; i < blocks.length; i++) {
             const block = blocks[i]
             if (block.alive) {
                 game.drawImage(block)

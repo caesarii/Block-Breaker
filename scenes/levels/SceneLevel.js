@@ -43,7 +43,7 @@ class SceneLevel  extends Scene {
         })
         
         game.registerAction('s', function(){
-            const s = Scene(game)
+            const s = SceneInst(game)
             game.replaceScene(s)
         })
     }
