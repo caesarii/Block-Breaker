@@ -12,12 +12,14 @@ class Block extends GameImage {
         this.h = img.height
     }
     kill() {
+        const o = this
         o.lifes--
         if (o.lifes < 1) {
             o.alive = false
         }
     }
-    collide() {
+    collide(b) {
+        const o = this
         return o.alive && (rectIntersects(o, b) || rectIntersects(b, o))
     }
 }

@@ -2,7 +2,7 @@ class SceneTitle extends Scene {
     constructor(game) {
         super(game)
         game.registerAction('k', function(){
-            const s = SceneMain(game)
+            const s = SceneMain.new(game)
             log('scene main', s)
             game.replaceScene(s)
         })

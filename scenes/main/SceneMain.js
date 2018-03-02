@@ -5,20 +5,19 @@ class SceneMain extends Scene {
         this.ball = Ball.new(game)
         this.score = 0
         this.blocks = loadLevel(game, 1)
-    
-        
+        this.init()
     }
     
     init() {
-        const game = this.game
+        const {game, paddle, ball, }= this
         game.registerAction('a', function(){
-            this.paddle.moveLeft()
+            paddle.moveLeft()
         })
         game.registerAction('d', function(){
-            this.paddle.moveRight()
+            paddle.moveRight()
         })
         game.registerAction('f', function(){
-            this.ball.fire()
+            ball.fire()
         })
         
         // mouse event
@@ -53,7 +52,7 @@ class SceneMain extends Scene {
     
     draw() {
         // draw 背景
-        const {game, paddle, ball, score }= this
+        const {game, paddle, ball, score, blocks}= this
         game.context.fillStyle = "#554"
         game.context.fillRect(0, 0, 400, 300)
         // draw
@@ -74,7 +73,7 @@ class SceneMain extends Scene {
         if (window.paused) {
             return
         }
-        let {game, paddle, ball, score }= this
+        let {game, paddle, ball, score, blocks }= this
         ball.move()
         // 判断游戏结束
         if (ball.y > paddle.y) {

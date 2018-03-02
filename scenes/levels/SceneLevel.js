@@ -7,7 +7,7 @@ class SceneLevel  extends Scene {
     
     setup(game) {
         this.game = game
-        this.paddle = Paddle(game)
+        this.paddle = Paddle.new(game)
         this.ball = Ball.new(game)
         this.score = 0
         this.blocks = [] // loadLevel(game, 1)
@@ -50,11 +50,7 @@ class SceneLevel  extends Scene {
     
     
     draw() {
-        const game = this.game
-        const blocks = this.blocks
-        const paddle = this.paddle
-        const ball = this.ball
-        const score = this.score
+        const {game, blocks, paddle, ball, score} = this
         // draw 背景
         game.context.fillStyle = "#554"
         game.context.fillRect(0, 0, 400, 300)
