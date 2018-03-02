@@ -8,7 +8,7 @@ class SceneLevel  extends Scene {
     setup(game) {
         this.game = game
         this.paddle = Paddle(game)
-        this.ball = Ball(game)
+        this.ball = Ball.new(game)
         this.score = 0
         this.blocks = [] // loadLevel(game, 1)
         this.enableDrag = false
@@ -43,7 +43,7 @@ class SceneLevel  extends Scene {
         })
         
         game.registerAction('s', function(){
-            const s = SceneInst(game)
+            const s = SceneMain(game)
             game.replaceScene(s)
         })
     }
@@ -92,7 +92,7 @@ class SceneLevel  extends Scene {
         // 判断相撞
         if (paddle.collide(ball)) {
             // 这里应该调用一个 ball.反弹() 来实现
-            ball.反弹()
+            ball.bounce()
         }
         // 判断 ball 和 blocks 相撞
         for (let i = 0; i < blocks.length; i++) {
@@ -100,7 +100,7 @@ class SceneLevel  extends Scene {
             if (block.collide(ball)) {
                 // log('block 相撞')
                 block.kill()
-                ball.反弹()
+                ball.bounce()
                 // 更新分数
                 score += 100
             }

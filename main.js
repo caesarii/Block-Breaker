@@ -17,7 +17,7 @@ const enableDebugMode = function(game, enable) {
     window.paused = false
     window.addEventListener('keydown', function(event){
         const k = event.key
-        if (k == 'p') {
+        if (k === 'p') {
             // 暂停功能
             window.paused = !window.paused
         } else if ('1234567'.includes(k)) {
@@ -39,9 +39,10 @@ const __main = function() {
         block: 'img/block.png',
         paddle: 'img/paddle.png',
     }
-    const game = Game.instance(30, images, function(g){
+    const game = Game.new(30, images, function(g){
+        log('callback')
         const s = SceneTitle.new(g)
-        g.runWithScene(s)
+        g.loadScene(s)
     })
     
     enableDebugMode(game, true)
