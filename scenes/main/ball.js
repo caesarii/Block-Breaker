@@ -3,7 +3,7 @@ class Ball extends GameImage {
         super(game)
         const img = game.imageByName('ball')
         // GameImage 共有的属性
-        this.image = img
+        this.texture = img
         this.w = img.width
         this.h = img.height
         this.x = 100

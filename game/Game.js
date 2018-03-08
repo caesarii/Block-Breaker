@@ -48,7 +48,7 @@ class Game extends GameObject {
     }
     
     drawImage(img) {
-        this.context.drawImage(img.image, img.x, img.y)
+        this.context.drawImage(img.texture, img.x, img.y)
     }
     // update
     update() {
@@ -85,7 +85,7 @@ class Game extends GameObject {
     }
     
     // 使用 Game 载入的素材
-    imageByName(name) {
+    textureByName(name) {
         const g = this
         // log('image by name', g.images)
         const img = g.images[name]
@@ -109,8 +109,9 @@ class Game extends GameObject {
     
     // 供场景调用的方法
     // 绘制文本
-    drawText(text, left, top, font='20px serif',) {
-        this.context.font = font
+    drawText(text, left, top, style={font: '20px serif', color: 'black'}) {
+        this.context.font = style.font
+        this.context.fillStyle = style.color
         this.context.fillText(text, left, top)
     }
     

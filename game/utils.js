@@ -11,3 +11,7 @@ const rectIntersects = function(a, b) {
     }
     return false
 }
+
+const aInb = function(x, x1, x2) {
+    return x >= x1 && x <= x2
+}

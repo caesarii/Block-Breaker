@@ -30,9 +30,7 @@ class Paddle extends GameImage {
     }
     
     collide(ball) {
-        const aInb = function(x, x1, x2) {
-            return x >= x1 && x <= x2
-        }
+        
         // if (ball.y + ball.h > o.y) {
         //     if (ball.x > o.x && ball.x < o.x + o.w) {
         //         log('相撞')

@@ -1,13 +1,19 @@
 
 class GameImage extends GameObject {
-    constructor() {
+    constructor(game, name) {
         super()
-        this.image = null
-        this.w = 0
-        this.h = 0
+        this.texture = game.textureByName(name)
+        this.w = this.texture.width
+        this.h = this.texture.height
         this.x = 0
         this.y = 0
-        this.speedX = 0
-        this.speedY = 0
+    }
+    
+    draw() {
+        this.game.drawImage(this)
+    }
+    
+    update() {
+    
     }
 }
